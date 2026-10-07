@@ -1,0 +1,46 @@
+{
+  "name": "wtf-livepulse-backend",
+  "version": "1.0.0",
+  "description": "WTF LivePulse - Real-time gym dashboard backend",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "migrate": "node src/db/migrate.js",
+    "seed": "node src/db/seed.js",
+    "test": "jest --coverage --forceExit --detectOpenHandles",
+    "test:unit": "jest --testPathPattern=tests/unit --forceExit",
+    "test:integration": "jest --testPathPattern=tests/integration --forceExit --detectOpenHandles",
+    "test:e2e": "npx playwright test"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "cors": "^2.8.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "faker-js": "^1.0.0",
+    "helmet": "^8.3.0",
+    "pg": "^8.11.3",
+    "ws": "^8.16.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "clover"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/db/seed.js",
+      "!src/db/migrate.js"
+    ],
+    "testTimeout": 30000
+  }
+}
